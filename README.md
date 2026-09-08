@@ -6,7 +6,7 @@
 
 # Do LLMs Exhibit Coherent Knowledge Structures in Mathematical Reasoning?
 
-![arXiv](https://img.shields.io/badge/arXiv-2609.05245-b31b1b.svg)[![EMNLP 2026](https://img.shields.io/badge/EMNLP-2026-4b8bbe.svg)](https://2026.emnlp.org/)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![arXiv](https://img.shields.io/badge/arXiv-2609.05245-b31b1b.svg) [![EMNLP 2026](https://img.shields.io/badge/EMNLP-2026-4b8bbe.svg)](https://2026.emnlp.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 
@@ -21,6 +21,12 @@ Implementation of [**Do LLMs Exhibit Coherent Knowledge Structures in Mathematic
 <p align="center">   <img src="assets/overview.svg" width="95%" alt="KST framework overview"> </p>
 
 
+
+## Usage
+
+**Data**:  Our data can be downloaded from [here](https://drive.google.com/file/d/1M1pSEtzZNupeFXoaF_13PqJA9FeqGafF/view?usp=sharing), which includes the XES3G5M dataset and the prerequisite pairs we extracted.  
+
+To reproduce our main results, place the dataset folder under data, and run `sh scripts/eval_psr.sh` .  
 
 
 

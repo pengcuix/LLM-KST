@@ -157,6 +157,7 @@ if __name__ == '__main__':
     parser.add_argument('--subject', type=str, default='human')
     parser.add_argument('--output_path', type=Path)
     parser.add_argument('--deps_grounding', type=str, default='skill')
+    parser.add_argument('--pre_questions_file', type=str)
     args = parser.parse_args()
 
     print('Args dataset: {}, q_type: {}, subject: {}'.format(args.dataset, args.q_type, args.subject))
@@ -186,14 +187,10 @@ if __name__ == '__main__':
     print('{} subjects, {} questions'.format(len(subject_responses), sum([len(q_ids) for q_ids in subject_responses.values()])))
 
     # prerequisite questions
-    with open('data/dataset/xes_pre_questions_skill_verified_sampled.json', 'r') as fp_pre_questions:
+    with open(args.pre_questions_file, 'r') as fp_pre_questions:
         pre_questions = json.load(fp_pre_questions)
 
     keys = list(pre_questions.keys())
-    # sampled_keys = random.sample(keys, k=int(len(keys) * 0.30))
-    # pre_questions = {key: pre_questions[key] for key in sampled_keys}
-    # print('here', len(pre_questions))
-    # exit(1)
     if args.target == 'subjects':
         acc_result = eval_acc(subject_responses)
         psr_result_macro = eval_psr_subject(
@@ -206,8 +203,8 @@ if __name__ == '__main__':
             sub_responses=subject_responses,
             level='micro'
         )
-        # with open(args.output_path, 'w') as fp_output:
-        #     json.dump({'subject_id': args.subject, 'subject_acc': acc_result, 'subject_psr_macro': psr_result_macro, 'subject_psr_micro': psr_result_micro}, fp_output)
+        with open(args.output_path, 'w') as fp_output:
+            json.dump({'subject_id': args.subject, 'subject_acc': acc_result, 'subject_psr_macro': psr_result_macro, 'subject_psr_micro': psr_result_micro}, fp_output)
 
         print(f'{args.subject}, acc={np.mean(list(acc_result.values()))}')
         print(f'{args.subject}, psr_micro={np.mean(list(psr_result_micro.values()))}')
@@ -217,22 +214,3 @@ if __name__ == '__main__':
         print('='*100)
         print(args.subject)
         item_psr_result = eval_psr_item(question_prerequisite=pre_questions, sub_responses=subject_responses)
-        # all_psrs = [v['psr'] for k, v in item_psr_result.items() if v['num_total_pre'] > 5]
-
-        # x = np.array(all_psrs)
-        # bins = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
-        # counts, edges = np.histogram(x[x < 1], bins=bins)
-        #
-        # # 比例
-        # ratios = counts / len(x)
-        # # 单独统计 ==1
-        # ratio_eq_1 = np.mean(x == 1)
-        #
-        # print("0-0.2:", ratios[0])
-        # print("0.2-0.4:", ratios[1])
-        # print("0.4-0.6:", ratios[2])
-        # print("0.6-0.8:", ratios[3])
-        # print("0.8-1.0:", ratios[4])
-        # print("=1:", ratio_eq_1)
-        # with open(args.output_path, 'w') as fp_output:
-        #     json.dump({'subject_id': args.subject, 'item_psr': item_psr_result}, fp_output)
