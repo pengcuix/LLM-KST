@@ -10,7 +10,9 @@
 
 
 
-Implementation of [**Do LLMs Exhibit Coherent Knowledge Structures in Mathematical Reasoning? A Perspective from Knowledge Space Theory**](https://arxiv.org/abs/2609.05245) at EMNLP 2026 findings.  Peng Cui=, Heejin Do=, Mrinmaya Sachan · ETH Zürich
+Implementation of [**Do LLMs Exhibit Coherent Knowledge Structures in Mathematical Reasoning? A Perspective from Knowledge Space Theory**](https://arxiv.org/abs/2609.05245) at EMNLP 2026 findings.  Peng Cui<sup>\*</sup>, Heejin Do<sup>\*</sup>, Mrinmaya Sachan · ETH Zürich
+
+<sup>\*</sup> Equal contribution.
 
 ## Abstract
 
