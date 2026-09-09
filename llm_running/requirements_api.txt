@@ -1,0 +1,11 @@
+# API Model Requirements
+# Install these for closed-source model support (GPT, Claude)
+
+# OpenAI GPT models
+openai>=1.0.0
+
+# Anthropic Claude models
+anthropic>=0.18.0
+
+# Optional: for better progress display
+tqdm
